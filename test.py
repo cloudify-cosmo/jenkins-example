@@ -14,7 +14,7 @@ class TestHello(unittest.TestCase):
         self.assertEqual(rv.data, b'Hello World!\n')
 
     def test_hello_hello(self):
-        rv = self.app.get('/hello/')
+        rv = self.app.get('/hello2/')
         self.assertEqual(rv.status, '200 OK')
         self.assertEqual(rv.data, b'Hello World!\n')
 
