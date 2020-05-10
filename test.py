@@ -9,7 +9,7 @@ class TestHello(unittest.TestCase):
         self.app = app.app.test_client()
 
     def test_hello(self):
-        rv = self.app.get('/3345')
+        rv = self.app.get('/33f')
         self.assertEqual(rv.status, '200 OK')
         self.assertEqual(rv.data, b'Hello World!\n')
 
