@@ -9,14 +9,14 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        container('node') {
+        container('python') {
           sh 'pip install -r requirements.txt'
         }
       }
     }
     stage('Run Unit Tests') {
       steps {
-        container('docker') {
+        container('python') {
           sh 'python test.py'
         }   
       }
