@@ -9,18 +9,18 @@ class TestHello(unittest.TestCase):
         self.app = app.app.test_client()
 
     def test_hello(self):
-        rv = self.app.get('/')
+        rv = self.app.get('/3')
         self.assertEqual(rv.status, '200 OK')
         self.assertEqual(rv.data, b'Hello World!\n')
 
     def test_hello_hello(self):
-        rv = self.app.get('/hello2/')
+        rv = self.app.get('/hello123/')
         self.assertEqual(rv.status, '200 OK')
         self.assertEqual(rv.data, b'Hello World!\n')
 
     def test_hello_name(self):
         name = 'Simon'
-        rv = self.app.get(f'/hello/{name}')
+        rv = self.app.get(f'/hello123/{name}')
         self.assertEqual(rv.status, '200 OK')
         self.assertIn(bytearray(f"{name}", 'utf-8'), rv.data)
 
