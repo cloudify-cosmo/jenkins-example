@@ -2,8 +2,8 @@
 from flask import Flask
 app = Flask(__name__)
 
-@app.route('/')
-@app.route('/hello')  # this route is not working
+@app.route('/2')
+@app.route('/hello22')  # this route is not working
 @app.route('/hello/')
 def hello_world():
     return 'Hello World!\n'
