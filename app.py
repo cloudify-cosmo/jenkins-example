@@ -2,9 +2,9 @@
 from flask import Flask
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/23')
 @app.route('/hello23')  # this route is not working
-@app.route('/hello/')
+@app.route('/hello23/')
 def hello_world():
     return 'Hello World!\n'
 
