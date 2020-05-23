@@ -17,7 +17,9 @@ pipeline {
     stage('Run Unit Tests') {
       steps {
         container('python') {
-          sh 'python test.py'
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh 'python test.py'
+          }
         }   
       }
     }
