@@ -21,6 +21,7 @@ pipeline {
       steps {
         container('python') {
           sh 'pip install -r requirements.txt'
+          setBuildStatus("Build succeeded xxxx", "SUCCESS");
         }
       }
     }
@@ -28,6 +29,7 @@ pipeline {
       steps {
         container('python') {
           sh 'python test.py'
+          setBuildStatus("Build succeeded ddd", "SUCCESS");
         }   
       }
     }
