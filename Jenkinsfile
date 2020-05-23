@@ -21,5 +21,26 @@ pipeline {
         }   
       }
     }
+    stage('After Build 1') {
+      steps {
+        container('python') {
+          sh 'echo "Hello world"'
+        }   
+      }
+    }
+    stage('After Build 2') {
+      steps {
+        container('python') {
+          sh 'echo "Hello world 2"'
+        }   
+      }
+    }
+    stage('After Build 3') {
+      steps {
+        container('python') {
+          sh 'echo "Hello world 3"'
+        }   
+      }
+    }
   }
 }
