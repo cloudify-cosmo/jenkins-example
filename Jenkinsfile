@@ -38,6 +38,7 @@ pipeline {
     }
     stage('Run flake8') {
       steps {
+        echo 'CHANGE_URL: ' + env.CHANGE_URL
         container('python') {
           sh 'echo "Run flake8"'
         }   
@@ -45,6 +46,7 @@ pipeline {
     }
     stage('Check for compatability with python 3') {
       steps {
+        echo 'CHANGE_TITLE: ' + env.CHANGE_TITLE
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
           sh "exit 1"
         }
