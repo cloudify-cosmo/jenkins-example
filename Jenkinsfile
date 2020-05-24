@@ -9,6 +9,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
+        echo 'BRANCH NAME: ' + env.BRANCH_NAME
         container('python') {
           sh 'pip install -r requirements.txt'
         }
@@ -16,9 +17,37 @@ pipeline {
     }
     stage('Run Unit Tests') {
       steps {
+        echo 'CHANGE_ID: ' + env.CHANGE_ID
         container('python') {
-          sh 'python test.py'
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh 'python test.py'
+          }
         }   
+      }
+    }
+    stage('Run RPMS') {
+      steps {
+        echo 'ALL ENV:'
+        echo sh(returnStdout: true, script: 'env')
+        container('python') {
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "exit 1"
+          }
+        }   
+      }
+    }
+    stage('Run flake8') {
+      steps {
+        container('python') {
+          sh 'echo "Hello world 2"'
+        }   
+      }
+    }
+    stage('Check for compatability with python 3') {
+      steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+          sh "exit 1"
+        }
       }
     }
   }
