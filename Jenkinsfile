@@ -8,6 +8,9 @@ pipeline {
   }
   stages {
     stage('Build') {
+      echo 'branch name: ' + env.BRANCH_NAME
+      echo 'CHANGE_ID: ' + env.CHANGE_ID
+      echo 'Full env ' + env
       steps {
         container('python') {
           sh 'pip install -r requirements.txt'
