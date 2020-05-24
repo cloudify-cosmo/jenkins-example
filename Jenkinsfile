@@ -39,7 +39,7 @@ pipeline {
     stage('Run flake8') {
       steps {
         container('python') {
-          sh 'echo "Hello world 2"'
+          sh 'echo "Run flake8"'
         }   
       }
     }
