@@ -27,7 +27,8 @@ pipeline {
     }
     stage('After Build 1') {
       steps {
-        echo 'FULL ENV: ' + env
+        echo 'ENV:'
+        echo sh(returnStdout: true, script: 'env')
         container('python') {
           sh 'echo "Hello world"'
         }   
