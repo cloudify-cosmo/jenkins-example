@@ -9,9 +9,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'branch name: ' + env.BRANCH_NAME
-        echo 'CHANGE_ID: ' + env.CHANGE_ID
-        echo 'Full env ' + env
+        echo 'BRANCH-NAME: ' + env.BRANCH_NAME
         container('python') {
           sh 'pip install -r requirements.txt'
         }
@@ -19,6 +17,7 @@ pipeline {
     }
     stage('Run Unit Tests') {
       steps {
+        echo 'CHANGE_ID: ' + env.CHANGE_ID
         container('python') {
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
             sh 'python test.py'
@@ -28,6 +27,7 @@ pipeline {
     }
     stage('After Build 1') {
       steps {
+        echo 'FULL ENV: ' + env
         container('python') {
           sh 'echo "Hello world"'
         }   
