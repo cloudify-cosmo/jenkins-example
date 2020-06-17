@@ -10,6 +10,8 @@ pipeline {
     stage('Build') {
       steps {
         echo 'BRANCH NAME: ' + env.BRANCH_NAME
+        echo sh(returnStdout: true, script: 'env')
+        
         container('python') {
           sh 'pip install -r requirements.txt'
         }
