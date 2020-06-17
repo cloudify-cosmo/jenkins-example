@@ -7,3 +7,5 @@ spec:
       command:
       - cat
       tty: true
+    nodeSelector:
+      instance-type: spot
