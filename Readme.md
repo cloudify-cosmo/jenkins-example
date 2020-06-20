@@ -1,1 +1,1 @@
-## Jenkins multibranch demo example
+## Jenkins multibranch demo
